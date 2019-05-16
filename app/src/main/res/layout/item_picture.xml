@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="@dimen/comment_70_dip"
+        android:layout_height="@dimen/comment_70_dip"
+        android:layout_margin="@dimen/comment_5_dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_middle_five" />
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_margin="@dimen/comment_5_dip"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/comment_70_dip"
+        android:layout_height="@dimen/comment_70_dip"
+        android:src="@drawable/icon_gallery_home" />
+
+</LinearLayout>

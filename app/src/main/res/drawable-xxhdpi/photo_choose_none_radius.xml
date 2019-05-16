@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <gradient
+        android:angle="90"
+        android:endColor="@color/white"
+        android:startColor="@color/white" />
+    <corners
+        android:bottomLeftRadius="@dimen/comment_8_dip"
+        android:bottomRightRadius="@dimen/comment_8_dip"
+        android:topLeftRadius="@dimen/comment_8_dip"
+        android:topRightRadius="@dimen/comment_8_dip" />
+
+</shape><!-- From: file:/E:/androidstudifeika/feika/app/src/main/res/drawable/photo_choose_none_radius.xml -->

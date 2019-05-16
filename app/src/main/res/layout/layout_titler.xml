@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycler"
+    android:background="@color/royalblue"
+    android:layout_height="@dimen/comment_50_dip">
+
+    <ImageView
+        android:id="@+id/title_back"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/comment_10_dip"
+        android:layout_height="match_parent"
+        android:src="@drawable/back"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/title_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/alpha_95_black"
+        android:textSize="@dimen/comment_14_size"
+        android:layout_centerInParent="true"
+        android:lines="1"
+        android:ellipsize="marquee"
+        android:focusableInTouchMode="true"
+        tools:ignore="EllipsizeMaxLines" />
+
+    <ImageView
+        android:id="@+id/title_photo"
+        android:layout_width="@dimen/comment_13_dip"
+        android:layout_height="@dimen/comment_15_dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_marginEnd="@dimen/comment_15_dip"
+
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/comment_14_size"
+        android:enabled="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/comment_10_dip"/>
+</RelativeLayout>

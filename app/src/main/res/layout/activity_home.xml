@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.home.activity.HomeActivity">
+
+    <e.library.NoScrollViewPager
+        android:id="@+id/pager_home"
+        android:layout_width="@dimen/comment_0_dip"
+        android:layout_height="@dimen/comment_0_dip"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pager_home"
+        app:layout_constraintTop_toBottomOf="@+id/pager_home">
+
+        <RadioGroup
+            android:id="@+id/radio_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/comment_52_dip"
+            android:background="@color/home_bottom_radio"
+            android:fitsSystemWindows="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/activity_layout"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_bottom_tab_home"
+                android:text="@string/home"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/activity_layout"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_bottom_tab_mine"
+                android:text="我的"
+                android:textSize="12sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

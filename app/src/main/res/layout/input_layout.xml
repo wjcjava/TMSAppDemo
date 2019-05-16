@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comment_5_dip"
+        android:layout_marginStart="@dimen/comment_20_dip"
+        android:layout_marginEnd="@dimen/comment_20_dip"
+        android:background="@drawable/radius_drawable_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/comment_10_dip"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:id="@+id/input_layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/comment_10_dip"
+                android:background="@color/tranparent"
+                android:hint="账号/用户名/邮箱"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:padding="@dimen/comment_5_dip"
+                android:textSize="@dimen/comment_14_size" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/comment_1_dip"
+            android:layout_marginBottom="@dimen/comment_5_dip"
+            android:layout_marginTop="@dimen/comment_5_dip"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/input_layout_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_pwt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/comment_10_dip"
+                android:background="@color/tranparent"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:padding="@dimen/comment_5_dip"
+                android:textSize="@dimen/comment_14_size" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
