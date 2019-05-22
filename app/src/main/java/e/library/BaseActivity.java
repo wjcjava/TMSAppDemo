@@ -1,33 +1,22 @@
 package e.library;
 
 
-import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BaseTransientBottomBar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import e.hanglungdemo.R;
-import e.hanglungdemo.app.MyApplication;
 import e.library.base.AppManager;
 import e.library.commonwidget.StatusBarCompat;
 import e.library.network.CommonDialog;
@@ -50,10 +39,11 @@ public abstract class BaseActivity extends SwipeActivity{
     }
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //
-StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.color_code_text));
+StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.blue));
         //StatusBarUtil.getStatusBarLightMode(this.getWindow());
         doBeforeSetcontentView();
         //Android中软键盘弹出时底部布局上移问题(解决方式之一)
@@ -66,7 +56,7 @@ StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.col
         initData();
         initView();
         doFirstRequest();
-
+       ;
     }
 
     /**
@@ -128,6 +118,7 @@ StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.col
     private void unregisterNetBroadCast() {
         if (mInterNetBroadCastManager != null) {
             unregisterReceiver(mInterNetBroadCastManager);
+
         }
     }
 
@@ -234,60 +225,4 @@ StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.col
         mNetWorkUtils.unregisterNetBroadCast();
 
     }
-
-
-
-
-
-
-    public void testCallPhone(String phone) {
-
-        if (Build.VERSION.SDK_INT >= 23) {
-
-            //判断有没有拨打电话权限
-            if (PermissionChecker.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-                //请求拨打电话权限
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CODE);
-
-            } else {
-                callPhone(phone);
-            }
-
-        } else {
-            callPhone(phone);
-        }
-    }
-
-
-    /**
-     * 请求权限的回调方法
-     * @param requestCode    请求码
-     * @param permissions    请求的权限
-     * @param grantResults   权限的结果
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_CODE && PermissionChecker.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            T.showLongToast( "授权成功");
-
-            callPhone(grantResults.toString());
-        }
-    }
-
-    private void callPhone(String phoneNum) {
-        //直接拨号
-        Uri uri = Uri.parse("tel:" + phoneNum);
-        Intent intent = new Intent(Intent.ACTION_CALL, uri);
-        //此处不判断就会报错
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-
-            startActivity(intent);
-        }
-    }
-
-    private final int REQUEST_CODE = 0x1001;
-
 }

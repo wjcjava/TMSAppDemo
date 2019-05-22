@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * author：luck
- * project：PictureSelector
- * package：com.luck.picture.ui
- * email：893855882@qq.com
- * data：16/12/31
+ * pream：
+ * 作者：wangjunchao on 2019-05-20 09:59
+ * 邮箱：2931748796@qq.com
  */
+class FullyGridLayoutManager extends GridLayoutManager {
 
-public class FullyGridLayoutManager extends GridLayoutManager {
     public FullyGridLayoutManager(Context context, int spanCount) {
         super(context, spanCount);
     }
@@ -23,7 +21,9 @@ public class FullyGridLayoutManager extends GridLayoutManager {
         super(context, spanCount, orientation, reverseLayout);
 
     }
+
     private int[] mMeasuredDimension = new int[2];
+
     @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
         final int widthMode = View.MeasureSpec.getMode(widthSpec);

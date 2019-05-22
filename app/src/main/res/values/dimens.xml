@@ -153,6 +153,7 @@
     <dimen name="comment_40_size">40sp</dimen>
     <dimen name="comment_30_size">30sp</dimen>
     <dimen name="comment_35_dip">35dp</dimen>
+    <dimen name="comment_85_dip">85dp</dimen>
 
 
 </resources>

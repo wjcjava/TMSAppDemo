@@ -7,17 +7,14 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.lang.annotation.Annotation;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -25,7 +22,6 @@ import e.hanglungdemo.ui.home.activity.HomeActivity;
 import e.library.BaseActivity;
 import e.library.T;
 import e.library.commonwidget.NotifyUtil;
-import e.library.commonwidget.StatusBarCompat;
 import e.library.commonwidget.StatusBarUtil;
 
 public class MainActivity extends BaseActivity {
@@ -45,11 +41,10 @@ public class MainActivity extends BaseActivity {
     EditText etPwt;
     int mWidth;
     int mHeight;
-    @Bind(R.id.title_right)
-    TextView righrTitle;
-    @Bind(R.id.title_back)
-    ImageView black;
-    private int requestCode;
+
+    private int requestCode=(int) SystemClock.uptimeMillis();
+    private NotifyUtil currentNotify;
+
     @OnClick(R.id.main_btn_login)
     public void click(View view) {
         switch (view.getId()) {
@@ -62,8 +57,7 @@ public class MainActivity extends BaseActivity {
                 mPsw.setVisibility(View.INVISIBLE);
                 inputAnimator(mInputLayout, mWidth, mHeight);
                 break;
-            case R.id.title_right:
-                break;
+
         }
     }
     /**
@@ -96,7 +90,6 @@ public class MainActivity extends BaseActivity {
         set.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
             }
             @Override
             public void onAnimationRepeat(Animator animation) {
@@ -136,6 +129,8 @@ public class MainActivity extends BaseActivity {
         animator3.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
+
+
             }
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -145,7 +140,8 @@ public class MainActivity extends BaseActivity {
                 } else {
                     recovery();
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                    T.showShortToast("登录成功");
+                    T.showLongToast("登录成功");
+
                 }
             }
             @Override
@@ -175,6 +171,7 @@ public class MainActivity extends BaseActivity {
         animator2.setDuration(500);
         animator2.setInterpolator(new AccelerateDecelerateInterpolator());
         animator2.start();
+
     }
     @Override
     protected int getLayoutId() {
@@ -183,17 +180,21 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        black.setVisibility(View.GONE);
         StatusBarUtil.immersive(this);
+        //设置想要展示的数据内容
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this,
-        requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        int smallIcon = R.drawable.video_icon;
-        String ticker = "欢迎使用TMS!";
-        String title = "TMS登录系统! ! !";
-        String content = "你正处在TMS登录页面哦,欢迎您的使用!";
+                requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        int smallIcon = R.drawable.leak_canary_icon;
+        String ticker = "TMS物流系统";
+        String title = "TMS物流系统！";
+        String content = "欢迎使用！";
+
+        //实例化工具类，并且调用接口
         NotifyUtil notify1 = new NotifyUtil(this, 1);
-        notify1.notify_normal_singline(pIntent, smallIcon, ticker, title, content, true, true, false);
+        notify1.notify_normal_singline(pIntent, R.drawable.leak_canary_icon, ticker, title, content, true, true, false);
+        currentNotify = notify1;
     }
 }

@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import e.library.T;
+
 import static e.library.network.NetWorkUtils.HAS_INTERNET;
 import static e.library.network.NetWorkUtils.NO_INTERNET;
 
@@ -71,7 +73,7 @@ public class InterNetBroadCastManager extends BroadcastReceiver {
 //        dialog.show();s
         if (ts == null) {
             tsShow=true;
-            ts = Toast.makeText(context, "您的手机断开网络连接了哦！", Toast.LENGTH_LONG);
+            T.showShortToast("您的网络断开了！");
 
         }
         ts.show();//这个是打开的意思,就是调用的意思。
@@ -83,7 +85,8 @@ public class InterNetBroadCastManager extends BroadcastReceiver {
     private void dissMissDialog() {
         if (ts!= null&&tsShow==true) {
             ts.cancel();
-            Toast.makeText(context, "您的网络又回来啦", Toast.LENGTH_SHORT).show();
+           T.showShortToast("您网络回来了" +
+                   "！");
         }
 
     }

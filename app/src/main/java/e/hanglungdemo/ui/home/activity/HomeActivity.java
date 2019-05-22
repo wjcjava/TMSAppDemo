@@ -19,7 +19,6 @@ import e.hanglungdemo.ui.home.fragment.HomeFragment;
 import e.hanglungdemo.ui.home.fragment.SettingFragment;
 import e.library.BaseActivity;
 import e.library.NoScrollViewPager;
-import e.library.commonwidget.NotifyUtil;
 
 public class HomeActivity extends BaseActivity{
     @Bind(R.id.pager_home)
@@ -47,7 +46,6 @@ public class HomeActivity extends BaseActivity{
                 break;
             case R.id.rb_mine:
                 homePager.setCurrentItem(1);
-                NotifyUtil notifyUtil=new NotifyUtil(this,1);
 
                 break;
         }

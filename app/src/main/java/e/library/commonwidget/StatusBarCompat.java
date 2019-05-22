@@ -76,6 +76,7 @@ public class StatusBarCompat {
                     mStatusBarView.setBackgroundColor(statusColor);
                     mDecorView.addView(mStatusBarView, 0);
                     mDecorView.setTag(true);
+
                 }
             }
         }

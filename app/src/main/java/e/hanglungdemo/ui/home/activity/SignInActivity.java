@@ -56,6 +56,7 @@ public class SignInActivity extends BaseActivity {
     private int themeId;
     private int chooseMode = PictureMimeType.ofAll();
     private BaseDialog dialog;
+    private boolean selection=true;
 
 
     @Override
@@ -99,6 +100,7 @@ public class SignInActivity extends BaseActivity {
                 etLob.setCursorVisible(true);
                 break;
         }
+
     }
 
     @Override
@@ -113,7 +115,6 @@ public class SignInActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
 
     }
-
 
 
     private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {
@@ -144,7 +145,7 @@ public class SignInActivity extends BaseActivity {
                                 .imageSpanCount(4)// 每行显示个数
                                 .isZoomAnim(true)// 图片列表点击 缩放效果 默认 true
                                 .sizeMultiplier(0.5f)// glide 加载图片大小 0~1 之间 如设置 .glideOverride()无效
-                                .selectionMode(true ? PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
+                                .selectionMode(selection? PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
                                 .previewImage(true)// 是否可预览图片
                                 .isCamera(true)// 是否显示拍照按钮
                                 .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
@@ -158,7 +159,6 @@ public class SignInActivity extends BaseActivity {
                                 .openClickSound(false)// 是否开启点击声音
                                 .selectionMedia(selectList)// 是否传入已选图片
                                 .minimumCompressSize(100)// 小于100kb的图片不压缩
-
                                 .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
                         dialog.close();
                     }
@@ -173,22 +173,22 @@ public class SignInActivity extends BaseActivity {
                                 .theme(themeId)// 主题样式设置 具体参考 values/styles
                                 .maxSelectNum(maxSelectNum)// 最大图片选择数量
                                 .minSelectNum(1)// 最小选择数量
-                                .selectionMode(true ?
-                                        PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
+                                .selectionMode(selection?PictureConfig.MULTIPLE:PictureConfig.SINGLE)// 多选 or 单选
                                 .previewImage(true)// 是否可预览图片
                                 .isCamera(true)// 是否显示拍照按钮
                                 .compress(true)// 是否压缩
-                                .glideOverride(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)// glide 加载宽高，越小图片列表越流畅
+                                // glide 加载宽高，越小图片列表越流畅
+                                .glideOverride(160, 160)
                                 .withAspectRatio(0, 0)//    裁剪比例 如16:9 3:2 3:4 1:1
                                 .hideBottomControls(true)// 是否显示uCrop工具栏，默认不显示
                                 .openClickSound(true)// 是否开启点击声音
                                 .selectionMedia(selectList)// 是否传入已选图片
                                 .previewEggs(true)//预览图片时 是否增强左右滑动图片体验
                                 .minimumCompressSize(100)// 小于100kb的图片不压缩
-                                .enableCrop(true)// 是否裁剪 true or false
-                                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
-                                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
-                                .cropCompressQuality(50)// 裁剪压缩质量 默认 90 int
+                                .enableCrop(false)// 是否裁剪 true or false
+//                                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
+//                                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
+//                                .cropCompressQuality(50)// 裁剪压缩质量 默认 90 int
                                 .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
                         dialog.close();
                     }
